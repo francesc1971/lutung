@@ -4,7 +4,7 @@
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -57,7 +57,7 @@ public class MandrillUrlsApi {
 	public MandrillUrl[] search(final String query) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("q", query);
 		return MandrillUtil.query(rootUrl+ "urls/search.json", 
 				params, MandrillUrl[].class);
@@ -75,7 +75,7 @@ public class MandrillUrlsApi {
 	public MandrillTimeSeries[] timeSeries(final String url) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("url", url);
 		return MandrillUtil.query(rootUrl+ "urls/time-series.json", 
 				params, MandrillTimeSeries[].class);

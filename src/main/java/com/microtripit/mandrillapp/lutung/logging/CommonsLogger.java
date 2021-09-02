@@ -6,11 +6,11 @@ import org.apache.commons.logging.LogFactory;
 /**
  * @author aldenquimby@gmail.com
  */
-public class CommonsLogger implements Logger {
+class CommonsLogger implements Logger {
 
     private final Log log;
 
-    public CommonsLogger(Class clazz) {
+    public CommonsLogger(final Class<?> clazz) {
         log = LogFactory.getLog(clazz);
     }
 

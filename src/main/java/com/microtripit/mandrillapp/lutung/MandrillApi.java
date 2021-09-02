@@ -1,30 +1,30 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung;
 
-import com.microtripit.mandrillapp.lutung.controller.MandrillExportsApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillInboundApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillIpsApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillMessagesApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillRejectsApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillSendersApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillSubaccountsApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillTagsApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillTemplatesApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillUrlsApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillUsersApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillWebhooksApi;
-import com.microtripit.mandrillapp.lutung.controller.MandrillWhitelistsApi;
+import com.microtripit.mandrillapp.lutung.controller.*;
+
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * @author rschreijer
  * @since Mar 17, 2013
  */
 public class MandrillApi {
+
 	public static final String rootUrl = "https://mandrillapp.com/api/1.0/";
 
 	private String key;
+
 	private final MandrillUsersApi users;
 	private final MandrillMessagesApi messages;
 	private final MandrillTagsApi tags;
@@ -40,23 +40,27 @@ public class MandrillApi {
 	private final MandrillIpsApi ips;
 	
 	public MandrillApi(final String key) {
-		this(key, rootUrl);
+		this(key, rootUrl, e -> {});
 	}
-	
+
+	public MandrillApi(final String key, final Consumer<Throwable> errorHandler) {//it could be nullable
+		this(key, rootUrl, Optional.ofNullable(errorHandler).orElseGet(() -> e -> {}));
+	}
+
 	public MandrillApi(final String key, final String rootUrl) {
-		if(key == null) {
-			throw new NullPointerException(
-					"'key' is null; please provide Mandrill API key");
-		}
-		if(rootUrl == null) {
-			throw new NullPointerException(
-					String.format("'rootUrl' is null; please provide Mandrill URL (default: %s)", rootUrl));
-		}
+		this(key, rootUrl, e -> {});
+	}
+
+	public MandrillApi(final String key, final String rootUrl, final Consumer<Throwable> errorHandler) {
+		//assertions
+		Objects.requireNonNull (key, "'key' is null; please provide Mandrill API key");
+		Objects.requireNonNull (rootUrl, String.format("'rootUrl' is null; please provide Mandrill URL (default: %s)", rootUrl));
+		Objects.requireNonNull (errorHandler, String.format("'errorHandler' is null; please provide a non nullable consumer of errors", rootUrl));
 		this.key = key;
 		users = new MandrillUsersApi(key, rootUrl);
-		messages = new MandrillMessagesApi(key, rootUrl);
+		messages = new MandrillMessagesApi(key, rootUrl, errorHandler);
 		tags = new MandrillTagsApi(key, rootUrl);
-		rejects = new MandrillRejectsApi(key, rootUrl);
+		rejects = new MandrillRejectsApi(key, rootUrl, errorHandler);
 		whitelists = new MandrillWhitelistsApi(key, rootUrl);
 		senders = new MandrillSendersApi(key, rootUrl);
 		urls = new MandrillUrlsApi(key, rootUrl);
@@ -66,10 +70,12 @@ public class MandrillApi {
 		inbound = new MandrillInboundApi(key, rootUrl);
 		exports = new MandrillExportsApi(key, rootUrl);
 		ips = new MandrillIpsApi(key, rootUrl);
+		//load at init the ApacheHttpClientRequestDispatcher (and the HttpClient)
+		MandrillUtil.bootstrap();
 	}
 
 	/**
-	 * @return Your Mandrill API key.
+	 * @return Your Mandrill API key.o
 	 */
 	public String getKey() {
 		return key;

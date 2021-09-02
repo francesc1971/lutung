@@ -25,7 +25,7 @@ public final class FeatureDetector {
      * @param className the name of the class to check
      * @return {@code true} true if class is present, {@code false} otherwise
      */
-    private static boolean isClassPresent(String className) {
+    public static boolean isClassPresent(String className) {
         try {
             Class.forName(className);
             return true;

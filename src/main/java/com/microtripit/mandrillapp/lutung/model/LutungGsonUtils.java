@@ -27,35 +27,30 @@ import java.util.TimeZone;
  * @since Mar 16, 2013
  */
 public final class LutungGsonUtils {
-	private static final String dateFormatStr = "yyyy-MM-dd HH:mm:ss";
 
-	private static Gson gson = createGson();
+	private static final String DATE_FORMAT_STR = "yyyy-MM-dd HH:mm:ss";
 
-	public static final Gson getGson() {
+	private static final Gson gson = createGson();
+
+	public static Gson getGson() {
 		return gson;
 	}
 
-	public static final Gson createGson() {
+	public static Gson createGson() {
 		return createGsonBuilder().create();
 	}
 
-	public static final GsonBuilder createGsonBuilder() {
+	public static GsonBuilder createGsonBuilder() {
 		return new GsonBuilder()
-				.setDateFormat(dateFormatStr)
+				.setDateFormat(DATE_FORMAT_STR)
 				.registerTypeAdapter(Date.class, new DateDeserializer())
 				.registerTypeAdapter(Map.class, new MapSerializer())
                 .registerTypeAdapter(MandrillMessage.Recipient.Type.class,
                 		new RecipientTypeSerializer());
 	}
 
-	public static final class DateDeserializer
+	public static class DateDeserializer
 			implements JsonDeserializer<Date>, JsonSerializer<Date> {
-
-		private SimpleDateFormat getNewDefaultDateTimeFormat() {
-			final SimpleDateFormat formatter = new SimpleDateFormat(dateFormatStr);
-			formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-			return formatter;
-		}
 
 		public final Date deserialize(final JsonElement json,
 				final Type typeOfT,
@@ -75,6 +70,7 @@ public final class LutungGsonUtils {
 						+json.getAsString()+ "'", e);
 
 			}
+
 		}
 
 		public JsonElement serialize(
@@ -84,6 +80,13 @@ public final class LutungGsonUtils {
 
 			return new JsonPrimitive(getNewDefaultDateTimeFormat().format(src));
 		}
+
+		private SimpleDateFormat getNewDefaultDateTimeFormat() {
+			final SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STR);
+			formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+			return formatter;
+		}
+
 	}
 
 	public static class MapSerializer implements JsonSerializer<Map<? extends Object,? extends Object>> {

@@ -1,5 +1,11 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.model;
 
@@ -10,7 +16,9 @@ import com.google.gson.Gson;
  * @since Mar 17, 2013
  */
 public class MandrillApiError extends Exception {
+
 	private static final long serialVersionUID = 1L;
+
 	private MandrillError error;
 	
 	public MandrillApiError() { super(); }
@@ -72,7 +80,15 @@ public class MandrillApiError extends Exception {
 	public final boolean hasMandrillErrorCode() {
 		return (error != null && error.hasCode());
 	}
-	
+
+	@Override
+	public String getMessage() {
+		if (this.error != null) {
+			return this.error.toString ();
+		}
+		return super.getMessage ();
+	}
+
 	/**
 	 * <p>Generate a JSON string representation for the error 
 	 * contained in this {@link MandrillApiError}.</p>
@@ -80,7 +96,7 @@ public class MandrillApiError extends Exception {
 	 * JSON representation.
 	 */
 	public final String getMandrillErrorAsJson() {
-		if(error != null) {
+		if (error != null) {
 			final Gson gson = LutungGsonUtils.createGsonBuilder()
 					.setPrettyPrinting().create();
 			return gson.toJson(error);
@@ -91,16 +107,17 @@ public class MandrillApiError extends Exception {
 		}
 	}
 	
-	protected final MandrillApiError withError(final MandrillError error) {
+	public final MandrillApiError withError(final MandrillError error) {
 		this.error = error;
 		return this;
 	}
 	
 	public static final class MandrillError {
-		private String status, name, message;
-		private Integer code;
+
+		private final String status, name, message;
+		private final Integer code;
 		
-		public MandrillError(String status, String name, String message, Integer code) {
+		public MandrillError(final String status, final String name, final String message, final Integer code) {
             this.status = status;
             this.name = name;
             this.message = message;
@@ -139,6 +156,7 @@ public class MandrillApiError extends Exception {
 		public final String getMessage() {
 			return message;
 		}
+
 		public final boolean hasMessage() {
 			return (message != null && !message.isEmpty());
 		}
@@ -154,6 +172,16 @@ public class MandrillApiError extends Exception {
 		 */
 		public final boolean hasCode() {
 			return code != null;
+		}
+
+		@Override
+		public String toString() {
+			return "MandrillError{" +
+					"status='" + status + '\'' +
+					", name='" + name + '\'' +
+					", message='" + message + '\'' +
+					", code=" + code +
+					'}';
 		}
 
 	}

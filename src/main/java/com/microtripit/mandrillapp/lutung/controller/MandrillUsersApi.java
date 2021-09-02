@@ -1,5 +1,11 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.controller;
 
@@ -9,7 +15,6 @@ import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
 import com.microtripit.mandrillapp.lutung.view.MandrillSender;
 import com.microtripit.mandrillapp.lutung.view.MandrillUserInfo;
-
 /**
  * <p></p>
  * @author rschreijer

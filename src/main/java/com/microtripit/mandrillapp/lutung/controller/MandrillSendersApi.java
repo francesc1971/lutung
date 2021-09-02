@@ -1,10 +1,16 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -76,7 +82,7 @@ public class MandrillSendersApi {
 	public MandrillDomain addDomain(final String domain) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("domain", domain);
 		return MandrillUtil.query(rootUrl+ "senders/add-domain.json", 
 				params, MandrillDomain.class);
@@ -95,7 +101,7 @@ public class MandrillSendersApi {
 	public MandrillDomain checkDomain(final String domain) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("domain", domain);
 		return MandrillUtil.query(rootUrl+ "senders/check-domain.json", 
 				params, MandrillDomain.class);
@@ -121,7 +127,7 @@ public class MandrillSendersApi {
 			final String domain, final String mailbox) 
 					throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("domain", domain);
 		params.put("mailbox", mailbox);
 		return MandrillUtil.query(rootUrl+ "senders/verify-domain.json", 
@@ -140,7 +146,7 @@ public class MandrillSendersApi {
 	public MandrillSender info(final String address) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("address", address);
 		return MandrillUtil.query(rootUrl+ "senders/info.json", 
 				params, MandrillSender.class);
@@ -158,7 +164,7 @@ public class MandrillSendersApi {
 	public MandrillTimeSeries[] timeSeries(final String address) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("address", address);
 		return MandrillUtil.query(rootUrl+ "senders/time-series.json", 
 				params, MandrillTimeSeries[].class);

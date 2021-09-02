@@ -1,6 +1,6 @@
 package com.microtripit.mandrillapp.lutung.logging;
 
-import com.microtripit.mandrillapp.lutung.util.FeatureDetector;
+import static com.microtripit.mandrillapp.lutung.util.FeatureDetector.isCommonsLoggingAvailable;
 
 /**
  * @author aldenquimby@gmail.com
@@ -13,12 +13,13 @@ public class LoggerFactory {
      * @param clazz class from which a log name will be derived
      * @return the logger
      */
-    public static Logger getLogger(Class clazz) {
-        if (FeatureDetector.isCommonsLoggingAvailable()) {
+    public static Logger getLogger(final Class<?> clazz) {
+        if (isCommonsLoggingAvailable()) {
             return new CommonsLogger(clazz);
         }
         else {
             return new NoOpLogger();
         }
     }
+
 }

@@ -40,5 +40,17 @@ public class MandrillMessageStatus {
 	public String getId() {
 		return _id;
 	}
-	
+
+	/**
+	 * @return a suitable representation of this object
+	 */
+	@Override
+	public String toString() {
+		return "MandrillMessageStatus{" +
+				"email='" + email + '\'' +
+				", status='" + status + '\'' +
+				", reject_reason='" + reject_reason + '\'' +
+				", _id='" + _id + '\'' +
+				'}';
+	}
 }

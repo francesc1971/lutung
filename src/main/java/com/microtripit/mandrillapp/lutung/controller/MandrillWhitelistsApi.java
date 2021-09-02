@@ -1,7 +1,7 @@
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -33,7 +33,7 @@ public class MandrillWhitelistsApi {
 	public Boolean add(final String email) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("email", email);
 		return MandrillUtil.query(rootUrl+ "whitelists/add.json", 
 				params, WhitelistsAddResponse.class).getWhether();
@@ -52,7 +52,7 @@ public class MandrillWhitelistsApi {
 	public MandrillWhitelistEntry[] list(final String email) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("email", email);
 		return MandrillUtil.query(rootUrl+ "whitelists/list.json", 
 				params, MandrillWhitelistEntry[].class);
@@ -69,7 +69,7 @@ public class MandrillWhitelistsApi {
 	public Boolean delete(final String email) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("email", email);
 		return MandrillUtil.query(rootUrl+ "whitelists/delete.json", 
 				params, WhitelistsDeleteResponse.class).getDeleted();

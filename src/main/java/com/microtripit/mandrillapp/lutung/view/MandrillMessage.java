@@ -13,6 +13,7 @@ import java.util.Map;
  * @since Mar 16, 2013
  */
 public class MandrillMessage {
+
 	private String subject, html, text, from_email, from_name;
 	private List<Recipient> to;
 	private Map<String,String> headers;
@@ -573,7 +574,17 @@ public class MandrillMessage {
 		this.recipient_metadata = recipientMetadata;
 	}
 
-	
+	@Override
+	public String toString() {
+		final StringBuilder sb = new StringBuilder("MandrillMessage{");
+		sb.append("subject='").append(subject).append('\'');
+		sb.append(", from_email='").append(from_email).append('\'');
+		sb.append(", from_name='").append(from_name).append('\'');
+		sb.append(", to=").append(to);
+		sb.append(", headers=").append(headers);;
+		sb.append('}');
+		return sb.toString();
+	}
 
 	/**
 	 * <p>A single recipient's information.</p>
@@ -631,7 +642,15 @@ public class MandrillMessage {
 			this.name = name;
 		}
 
-
+		@Override
+		public String toString() {
+			final StringBuilder sb = new StringBuilder("Recipient{");
+			sb.append("email='").append(email).append('\'');
+			sb.append(", name='").append(name).append('\'');
+			sb.append(", type=").append(type);
+			sb.append('}');
+			return sb.toString();
+		}
 	}
 	
 	/**

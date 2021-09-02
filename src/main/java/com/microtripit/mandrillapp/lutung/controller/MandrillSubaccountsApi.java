@@ -1,7 +1,16 @@
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
+ */
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -32,7 +41,7 @@ public class MandrillSubaccountsApi {
 	public MandrillSubaccountInfo[] list(final String q) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("q", q);
 		return MandrillUtil.query(rootUrl+ "subaccounts/list.json", 
 				params, MandrillSubaccountInfo[].class);
@@ -58,7 +67,7 @@ public class MandrillSubaccountsApi {
 			final String notes, final Integer customQuota)  
 					throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		params.put("name", name);
 		params.put("notes", notes);
@@ -78,7 +87,7 @@ public class MandrillSubaccountsApi {
 	public MandrillSubaccountInfo info(final String id) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		return MandrillUtil.query(rootUrl+ "subaccounts/info.json", 
 				params, MandrillSubaccountInfo.class);
@@ -104,7 +113,7 @@ public class MandrillSubaccountsApi {
 			final String name, final String notes, final Integer customQuota)  
 					throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		params.put("name", name);
 		params.put("notes", notes);
@@ -126,7 +135,7 @@ public class MandrillSubaccountsApi {
 	public MandrillSubaccountInfo delete(final String id) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		return MandrillUtil.query(rootUrl+ "subaccounts/delete.json", 
 				params, MandrillSubaccountInfo.class);
@@ -145,7 +154,7 @@ public class MandrillSubaccountsApi {
 	public MandrillSubaccountInfo pause(final String id) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		return MandrillUtil.query(rootUrl+ "subaccounts/pause.json", 
 				params, MandrillSubaccountInfo.class);
@@ -162,7 +171,7 @@ public class MandrillSubaccountsApi {
 	public MandrillSubaccountInfo resume(final String id) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		return MandrillUtil.query(rootUrl+ "subaccounts/resume.json", 
 				params, MandrillSubaccountInfo.class);

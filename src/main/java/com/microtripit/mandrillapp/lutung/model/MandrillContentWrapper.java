@@ -40,7 +40,7 @@ public final class MandrillContentWrapper {
 		this.content = content;
 	}
 	
-	public static final MandrillContentWrapper create(
+	public static MandrillContentWrapper create(
 			final String name, final String content) {
 		
 		final MandrillContentWrapper w = new MandrillContentWrapper();

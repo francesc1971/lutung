@@ -6,7 +6,7 @@ package com.microtripit.mandrillapp.lutung.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -108,7 +108,7 @@ public class MandrillWebhooksApi {
 	public MandrillWebhook add(final String url, final String description, 
 			final Collection<String> events) throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("url", url);
 		params.put("description", description);
 		params.put("events", events);
@@ -127,7 +127,7 @@ public class MandrillWebhooksApi {
 	public MandrillWebhook info(final Integer id) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		return MandrillUtil.query(rootUrl+ "webhooks/info.json", 
 				params, MandrillWebhook.class);
@@ -190,7 +190,7 @@ public class MandrillWebhooksApi {
 			final String description, final Collection<String> events) 
 					throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		params.put("url", url);
 		params.put("description", description);
@@ -210,7 +210,7 @@ public class MandrillWebhooksApi {
 	public MandrillWebhook delete(final Integer id) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		return MandrillUtil.query(rootUrl+ "webhooks/delete.json", 
 				params, MandrillWebhook.class);

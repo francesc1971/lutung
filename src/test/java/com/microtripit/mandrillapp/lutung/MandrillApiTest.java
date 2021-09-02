@@ -3,7 +3,7 @@
  */
 package com.microtripit.mandrillapp.lutung;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public final class MandrillApiTest extends MandrillTestCase {
 		final String key = mandrillApi.getKey();
 		Assert.assertNotNull(key);
 		Assert.assertFalse( key.isEmpty() );
-		Assert.assertFalse( key.equals("<put ur Mandrill API key here>") );
+		Assert.assertNotEquals( key, "<put ur Mandrill API key here>");
 	}
 	
 	@Test

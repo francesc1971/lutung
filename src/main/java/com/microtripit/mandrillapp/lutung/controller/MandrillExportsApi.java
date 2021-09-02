@@ -1,12 +1,18 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -18,6 +24,7 @@ import com.microtripit.mandrillapp.lutung.view.MandrillExportJobInfo;
  *
  */
 public class MandrillExportsApi {
+
 	private final String key;
 	private final String rootUrl;
 
@@ -46,7 +53,7 @@ public class MandrillExportsApi {
 	public MandrillExportJobInfo info(final String id) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("id", id);
 		return MandrillUtil.query(rootUrl+ "exports/info.json", 
 				params, MandrillExportJobInfo.class);
@@ -88,7 +95,7 @@ public class MandrillExportsApi {
 	public MandrillExportJobInfo rejects(final String notifyEmail) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("notify_email", notifyEmail);
 		return MandrillUtil.query(rootUrl+ "exports/rejects.json", 
 				params, MandrillExportJobInfo.class);
@@ -111,7 +118,7 @@ public class MandrillExportsApi {
 	public MandrillExportJobInfo whitelist(final String notifyEmail) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("notify_email", notifyEmail);
 		return MandrillUtil.query(rootUrl+ "exports/whitelist.json", 
 				params, MandrillExportJobInfo.class);
@@ -155,7 +162,7 @@ public class MandrillExportsApi {
 			final Collection<String> states, final Collection<String> apiKeys) 
 					throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("notify_email", notifyEmail);
 		params.put("date_from", dateFrom);
 		params.put("date_to", dateTo);

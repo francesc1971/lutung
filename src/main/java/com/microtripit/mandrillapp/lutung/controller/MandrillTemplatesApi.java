@@ -1,11 +1,16 @@
-/**
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
@@ -93,7 +98,7 @@ public class MandrillTemplatesApi {
 			final String text, final Boolean publish, String[] labels)
 					throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("name", name);
 		params.put("from_email", fromEmail);
 		params.put("from_name", fromName);
@@ -117,7 +122,7 @@ public class MandrillTemplatesApi {
 	public MandrillTemplate info(final String name)
 			throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("name", name);
 		return MandrillUtil.query(rootUrl+ "templates/info.json",
 				params, MandrillTemplate.class);
@@ -183,7 +188,7 @@ public class MandrillTemplatesApi {
 			final String subject, final String code, final String text,
 			final Boolean publish, String[] labels) throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("name", name);
 		params.put("from_email", fromEmail);
 		params.put("from_name", fromName);
@@ -209,7 +214,7 @@ public class MandrillTemplatesApi {
 	public MandrillTemplate publish(final String name)
 			throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("name", name);
 		return MandrillUtil.query(rootUrl+ "templates/publish.json",
 				params, MandrillTemplate.class);
@@ -226,7 +231,7 @@ public class MandrillTemplatesApi {
 	public MandrillTemplate delete(final String name)
 			throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("name", name);
 		return MandrillUtil.query(rootUrl+ "templates/delete.json",
 				params, MandrillTemplate.class);
@@ -261,7 +266,7 @@ public class MandrillTemplatesApi {
 	public MandrillTemplate[] list(String label)
 			throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("label", label);
 
 		return MandrillUtil.query(
@@ -282,7 +287,7 @@ public class MandrillTemplatesApi {
 	public MandrillTimeSeries[] timeSeries(final String name)
 			throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("name", name);
 		return MandrillUtil.query(rootUrl+ "templates/time-series.json",
 				params, MandrillTimeSeries[].class);
@@ -310,7 +315,7 @@ public class MandrillTemplatesApi {
 			final Map<String,String> mergeVars)
 					throws MandrillApiError, IOException {
 
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("template_name", name);
 		if(templateContent != null && !templateContent.isEmpty()) {
 			final ArrayList<MandrillContentWrapper> contents =

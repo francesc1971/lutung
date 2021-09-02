@@ -1,10 +1,16 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -57,7 +63,7 @@ public class MandrillTagsApi {
 	public MandrillTag delete(final String tagName) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("tag", tagName);
 		return MandrillUtil.query(rootUrl+ "tags/delete.json", 
 				params, MandrillTag.class);
@@ -75,7 +81,7 @@ public class MandrillTagsApi {
 	public MandrillTag info(final String tagName) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("tag", tagName);
 		return MandrillUtil.query(rootUrl+ "tags/info.json", 
 				params, MandrillTag.class);
@@ -94,7 +100,7 @@ public class MandrillTagsApi {
 	public MandrillTimeSeries[] timeSeries(final String tagName) 
 			throws MandrillApiError, IOException{
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("tag", tagName);
 		return MandrillUtil.query(rootUrl+ "tags/time-series.json", 
 				params, MandrillTimeSeries[].class);

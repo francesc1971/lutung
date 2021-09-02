@@ -1,11 +1,17 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -57,7 +63,7 @@ public class MandrillInboundApi {
 	 MandrillMailboxRoute[] routes(final String domain)
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("domain", domain);
 		return MandrillUtil.query(rootUrl+ "inbound/routes.json", 
 				params, MandrillMailboxRoute[].class);
@@ -112,7 +118,7 @@ public class MandrillInboundApi {
 			final String helo, final String clientAddress) 
 					throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("raw_message", rawMessage);
 		params.put("to", to);
 		params.put("mail_from", mailFrom);

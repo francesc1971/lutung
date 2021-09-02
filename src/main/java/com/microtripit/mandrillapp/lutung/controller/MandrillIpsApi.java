@@ -1,11 +1,17 @@
-/**
- * 
+/*
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Blueknow Lutung
+ *
+ * (c) Copyright 2009-2019 Blueknow, S.L.
+ *
+ * ALL THE RIGHTS ARE RESERVED
  */
 package com.microtripit.mandrillapp.lutung.controller;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Map;
 
 import com.microtripit.mandrillapp.lutung.MandrillApi;
 import com.microtripit.mandrillapp.lutung.model.MandrillApiError;
@@ -55,7 +61,7 @@ public class MandrillIpsApi {
 	public MandrillDedicatedIp info(final String ip) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("ip", ip);
 		return MandrillUtil.query(rootUrl+ "ips/info.json", 
 				params, MandrillDedicatedIp.class);
@@ -76,7 +82,7 @@ public class MandrillIpsApi {
 	public Date provision(final Boolean warmup, final String pool) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("warmup", warmup);
 		params.put("pool", pool);
 		return MandrillUtil.query(rootUrl+ "ips/provision.json", 
@@ -98,7 +104,7 @@ public class MandrillIpsApi {
 	public MandrillDedicatedIp startWarmup(final String ip) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("ip", ip);
 		return MandrillUtil.query(rootUrl+ "ips/start-warmup.json", 
 				params, MandrillDedicatedIp.class);
@@ -115,7 +121,7 @@ public class MandrillIpsApi {
 	public MandrillDedicatedIp cancelWarmup(final String ip) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("ip", ip);
 		return MandrillUtil.query(rootUrl+ "ips/cancel-warmup.json", 
 				params, MandrillDedicatedIp.class);
@@ -136,7 +142,7 @@ public class MandrillIpsApi {
 			final String pool, final Boolean createPool) 
 					throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("ip", ip);
 		params.put("pool", pool);
 		params.put("create_pool", createPool);
@@ -155,7 +161,7 @@ public class MandrillIpsApi {
 	public Boolean delete(final String ip) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("ip", ip);
 		return MandrillUtil.query(rootUrl+ "ips/delete.json", 
 				params, DeleteResponse.class).getDeleted();
@@ -188,7 +194,7 @@ public class MandrillIpsApi {
 	public MandrillDedicatedIpPool poolInfo(final String pool) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("pool", pool);
 		return MandrillUtil.query(rootUrl+ "ips/pool-info.json", 
 				params, MandrillDedicatedIpPool.class);
@@ -206,7 +212,7 @@ public class MandrillIpsApi {
 	public MandrillDedicatedIpPool createPool(final String pool) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("pool", pool);
 		return MandrillUtil.query(rootUrl+ "ips/create-pool.json", 
 				params, MandrillDedicatedIpPool.class);
@@ -224,7 +230,7 @@ public class MandrillIpsApi {
 	public Boolean deletePool(final String pool) 
 			throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("pool", pool);
 		return MandrillUtil.query(rootUrl+ "ips/delete-pool.json", 
 				params, DeletePoolResponse.class).getDeleted();
@@ -243,7 +249,7 @@ public class MandrillIpsApi {
 	public MandrillDnsCheck checkCustomDns(final String ip, 
 			final String domain) throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("ip", ip);
 		params.put("domain", domain);
 		return MandrillUtil.query(rootUrl+ "ips/check-custom-dns.json", 
@@ -263,7 +269,7 @@ public class MandrillIpsApi {
 	public MandrillDedicatedIp setCustomDns(final String ip, 
 			final String domain) throws MandrillApiError, IOException {
 		
-		final HashMap<String,Object> params = MandrillUtil.paramsWithKey(key);
+		final Map<String,Object> params = MandrillUtil.paramsWithKey(key);
 		params.put("ip", ip);
 		params.put("domain", domain);
 		return MandrillUtil.query(rootUrl+ "ips/set-custom-dns.json", 
