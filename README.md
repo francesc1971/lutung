@@ -1,5 +1,7 @@
-Lutung - Java Mandrill API
+Lutung - Java Mandrill API (Blueknow Fork)
 ======
+
+This project is a Fork of Lutung and updated to Java 11 and new features.
 
 [![Join the chat at https://gitter.im/rschreijer/lutung](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rschreijer/lutung?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
